@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        {% block title %}<title>Trial and Errror: Home</title>{% endblock %}
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='resume/css/styles.css') }}" rel="stylesheet">
+        <!-- Fonts CSS-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='resume/css/heading.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='resume/css/body.css') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='resume/favicon.ico') }}"/>
+    </head>
+    {% include 'resume/base/navbar.html' %}
+    <body id="page-top" style="padding-top:4.7rem;">
+        <div class="main">
+            {% block body %}
+            {% endblock %}
+        </div>
+        {% include 'resume/base/footer.html' %}
+    </body>
+</html>
