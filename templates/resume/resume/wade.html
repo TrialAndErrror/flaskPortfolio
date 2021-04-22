@@ -1,0 +1,102 @@
+{% extends 'resume/base/resume_base.html' %}
+
+{% block body %}
+    <header class="masthead bg-primary text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="{{ url_for('static', filename='resume/wade.jpg') }}" alt="Wade Green">
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading mb-0">Wade Green</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="pre-wrap masthead-subheading font-weight-light mb-0">Attorney</p>
+                <p class="pre-wrap masthead-subheading font-weight-light mb-0">Python Developer</p>
+                <p class="pre-wrap masthead-subheading font-weight-light mb-0">Technology Educator</p>
+            </div>
+        </header>
+        <div class="container">
+            <div style="padding-top: 2em; border-bottom: 5px solid black">
+                <h1>Employment History</h1>
+            </div>
+            {% for item in job_entries %}
+                <div>
+                    <table>
+                        <tr>
+                            <td style="padding-top: 1em"><h4>{{ item.employer }}</h4></td>
+                            <td>{% if not item.present_job %}
+                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to {{ item.end_date.strftime('%B') }} {{ item.end_date.strftime('%Y') }}</p>
+                                {% else %}
+                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to Present
+                                {% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ item.job_title }} - {{ item.location }}</td>
+                        </tr>
+                        <tr >
+                            <td colspan="2" style="border-bottom: 1px solid black">
+                                <ul>
+                                    <li>{{ item.line_1 }}</li>
+                                    {% if item.line_2 %}
+                                        <li>{{ item.line_2 }}</li>
+                                    {% endif %}
+                                    {% if item.line_3 %}
+                                        <li>{{ item.line_3 }}</li>
+                                    {% endif %}
+                                    {% if item.line_4 %}
+                                        <li>{{ item.line_4 }}</li>
+                                    {% endif %}
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <div style="padding-top: 2em; border-bottom: 5px solid black">
+                <h1>Education</h1>
+            </div>
+            {% for item in school_entries %}
+                <div>
+                    <table>
+                        <tr>
+                            <td style="padding-top: 1em"><h4>{{ item.employer }}</h4></td>
+                            <td>{% if not item.present_job %}
+                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to {{ item.end_date.strftime('%B') }} {{ item.end_date.strftime('%Y') }}</p>
+                                {% else %}
+                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to Present
+                                {% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ item.job_title }} - {{ item.location }}</td>
+                        </tr>
+                        <tr >
+                            <td colspan="2" style="border-bottom: 1px solid black">
+                                <ul>
+                                    <li>{{ item.line_1 }}</li>
+                                    {% if item.line_2 %}
+                                        <li>{{ item.line_2 }}</li>
+                                    {% endif %}
+                                    {% if item.line_3 %}
+                                        <li>{{ item.line_3 }}</li>
+                                    {% endif %}
+                                    {% if item.line_4 %}
+                                        <li>{{ item.line_4 }}</li>
+                                    {% endif %}
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}
