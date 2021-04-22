@@ -6,7 +6,7 @@
                 <!-- Masthead Avatar Image-->
                 <img class="masthead-avatar mb-5" src="{{ url_for('static', filename='resume/wade.jpg') }}" alt="Wade Green">
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading mb-0">Wade Green</h1>
+                <h1 class="masthead-heading mb-0 title_shadow">Wade Green</h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -25,17 +25,17 @@
             </div>
             {% for item in job_entries %}
                 <div>
-                    <table>
+                    <table style="width: 100%;">
                         <tr>
                             <td style="padding-top: 1em"><h4>{{ item.employer }}</h4></td>
-                            <td>{% if not item.present_job %}
+                            <td style="text-align: right;">{% if not item.present_job %}
                                     {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to {{ item.end_date.strftime('%B') }} {{ item.end_date.strftime('%Y') }}</p>
                                 {% else %}
                                     {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to Present
                                 {% endif %}</td>
                         </tr>
                         <tr>
-                            <td>{{ item.job_title }} - {{ item.location }}</td>
+                            <td><span style="font-weight: bold;">{{ item.job_title }}</span>  ({{ item.location }})</td>
                         </tr>
                         <tr >
                             <td colspan="2" style="border-bottom: 1px solid black">
@@ -59,7 +59,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="container">
+        <div class="container" style="padding-bottom: 2em;">
             <div style="padding-top: 2em; border-bottom: 5px solid black">
                 <h1>Education</h1>
             </div>

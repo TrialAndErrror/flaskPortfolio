@@ -5,3 +5,8 @@ th {
 .location {
   font-style: italic;
 }
+
+.title_shadow {
+    text-shadow: 2px 2px 2px #77a360,
+	  	         4px 4px 2px #77a360;
+}
