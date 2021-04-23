@@ -1,5 +1,9 @@
 {% extends 'resume/base/resume_base.html' %}
 
+{% block title %}
+    <title>Trial and Errror: Wade Green Resume</title>
+{% endblock %}
+
 {% block body %}
     <header class="masthead bg-primary text-center">
             <div class="container d-flex align-items-center flex-column">
@@ -35,7 +39,7 @@
                                 {% endif %}</td>
                         </tr>
                         <tr>
-                            <td><span style="font-weight: bold;">{{ item.job_title }}</span>  ({{ item.location }})</td>
+                            <td colspan="2"><span style="font-weight: bold;">{{ item.job_title }}</span>  ({{ item.location }})</td>
                         </tr>
                         <tr >
                             <td colspan="2" style="border-bottom: 1px solid black">
@@ -65,17 +69,17 @@
             </div>
             {% for item in school_entries %}
                 <div>
-                    <table>
+                    <table style="width: 100%;">
                         <tr>
-                            <td style="padding-top: 1em"><h4>{{ item.employer }}</h4></td>
-                            <td>{% if not item.present_job %}
-                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to {{ item.end_date.strftime('%B') }} {{ item.end_date.strftime('%Y') }}</p>
-                                {% else %}
-                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to Present
-                                {% endif %}</td>
+                            <td style="padding-top: 1em">
+                                <h4>{{ item.school_name }}</h4>
+                            </td>
+                            <td style="text-align: right;">
+                                    Graduated {{ item.graduation_date.strftime('%B') }} {{ item.graduation_date.strftime('%Y') }}
+                            </td>
                         </tr>
                         <tr>
-                            <td>{{ item.job_title }} - {{ item.location }}</td>
+                            <td style="font-style: italic;">{{ item.degree }}</td>
                         </tr>
                         <tr >
                             <td colspan="2" style="border-bottom: 1px solid black">
@@ -94,8 +98,6 @@
                             </td>
                         </tr>
                     </table>
-
-
                 </div>
             {% endfor %}
         </div>

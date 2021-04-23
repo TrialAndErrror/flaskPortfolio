@@ -10,9 +10,9 @@ class JobForm(FlaskForm):
     location = StringField('Location', validators=[DataRequired()])
     important = BooleanField('Highlight')
 
-    start_date = DateField('Start Date', validators=[DataRequired()])
+    start_date = DateField('Start Date', format='%m/%d/%Y', validators=[DataRequired()])
     present_job = BooleanField('Current Job?')
-    end_date = DateField('End Date')
+    end_date = DateField('End Date', format='%m/%d/%Y')
 
     line_1 = StringField('Desc Line 1')
     line_2 = StringField('Desc Line 2')
@@ -26,7 +26,7 @@ class SchoolForm(FlaskForm):
     degree = StringField('Degree', validators=[DataRequired()])
     school_name = StringField('School Name', validators=[DataRequired()])
 
-    graduation_date = DateField('Graduation Date', validators=[DataRequired()])
+    graduation_date = DateField('Graduation Date', format='%m/%d/%Y', validators=[DataRequired()])
 
     line_1 = StringField('Desc Line 1')
     line_2 = StringField('Desc Line 2')

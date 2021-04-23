@@ -15,8 +15,18 @@
         <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='resume/favicon.ico') }}"/>
     </head>
     {% include 'resume/base/navbar.html' %}
-    <body id="page-top" >
+    <body id="page-top">
         <div class="main">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul class=flashes>
+                {% for category, message in messages %}
+                  <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+
             {% block body %}
             {% endblock %}
         </div>

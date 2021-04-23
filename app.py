@@ -1,11 +1,13 @@
 import os
 from datetime import datetime
 
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect, url_for
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user
 from flask_bcrypt import Bcrypt
+
+from forms import JobForm, SchoolForm
 
 app = Flask(__name__)
 
@@ -57,7 +59,6 @@ class School(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     degree = db.Column(db.String(50), nullable=False)
     school_name = db.Column(db.String(50), nullable=False)
-
     graduation_date = db.Column(db.DateTime, nullable=True)
 
     line_1 = db.Column(db.String(100), nullable=True, default='No Description')
@@ -100,11 +101,55 @@ def projects():
 
 
 @app.route('/resume')
-def edit_resume():
+def show_resume():
     jobs = Job.query.all()
     schools = School.query.all()
 
     return render_template('resume/resume/wade.html', job_entries=jobs, school_entries=schools)
+
+
+@app.route('/resume/create_job', methods=['GET', 'POST'])
+def create_job():
+    form = JobForm()
+    if form.validate_on_submit():
+        new_job = Job(
+            job_title=form.job_title.data,
+            employer=form.employer.data,
+            location=form.location.data,
+            important=form.important.data,
+            start_date=form.start_date.data,
+            present_job=form.present_job.data,
+            end_date=form.end_date.data,
+            line_1=form.line_1.data,
+            line_2=form.line_2.data,
+            line_3=form.line_3.data,
+            line_4=form.line_4.data
+        )
+        db.session.add(new_job)
+        db.session.commit()
+        flash('Job Created!', 'success')
+        return redirect(url_for('show_resume'))
+    return render_template('resume/resume/create_job.html', form=form)
+
+
+@app.route('/resume/create_school', methods=['GET', 'POST'])
+def create_school():
+    form = SchoolForm()
+    if form.validate_on_submit():
+        new_job = School(
+            school_name=form.school_name.data,
+            degree=form.degree.data,
+            graduation_date=form.graduation_date.data,
+            line_1=form.line_1.data,
+            line_2=form.line_2.data,
+            line_3=form.line_3.data,
+            line_4=form.line_4.data
+        )
+        db.session.add(new_job)
+        db.session.commit()
+        flash('Job Created!', 'success')
+        return redirect(url_for('show_resume'))
+    return render_template('resume/resume/create_school.html', form=form)
 
 
 if __name__ == '__main__':
