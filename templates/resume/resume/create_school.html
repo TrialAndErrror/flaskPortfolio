@@ -1,12 +1,18 @@
 {% extends 'resume/base/resume_base.html' %}
 
 {% block title %}
-    <title>Create School Post</title>
+    {% if current_user.is_authenticated %}
+        <title>Create School Post</title>
+    {% else %}
+        <title>404 Not Found<</title>
+    {% endif %}
 {% endblock %}
 
 {% block body %}
+{% if current_user.is_authenticated %}
 <section style="padding-top: 7rem; width: 80%; margin: auto;" >
   <div class="content-section">
+
       <form method="POST" action="">
           {{ form.hidden_tag() }}
           <fieldset>
@@ -136,6 +142,10 @@
               {{ form.submit(class="btn btn-outline-info") }}
           </div>
       </form>
+
   </div>
 </section>
+{% else %}
+    {% include 'resume/resume/unauthenticated.html' %}
+{% endif %}
 {% endblock %}

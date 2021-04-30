@@ -130,7 +130,8 @@ sup {
   top: -.5em; }
 
 a {
-  color: #b6d7a8;
+  color: #41a649;
+  font-weight: bold;
   text-decoration: none;
   background-color: transparent; }
   a:hover {

@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 
 from wtforms import StringField, SubmitField, BooleanField, DateField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Optional
 
 
 class JobForm(FlaskForm):
@@ -12,7 +12,7 @@ class JobForm(FlaskForm):
 
     start_date = DateField('Start Date', format='%m/%d/%Y', validators=[DataRequired()])
     present_job = BooleanField('Current Job?')
-    end_date = DateField('End Date', format='%m/%d/%Y')
+    end_date = DateField('End Date', format='%m/%d/%Y', validators=[Optional()])
 
     line_1 = StringField('Desc Line 1')
     line_2 = StringField('Desc Line 2')

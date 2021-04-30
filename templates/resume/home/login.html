@@ -1,0 +1,33 @@
+{% extends "resume/base/resume_base.html" %}
+
+{% block body %}
+<section class="page-section bg-primary md-12 mb-0 pb-5" style="margin-top:4.7rem;">
+        <div class="container">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title">Login Required</h3>
+                <div class="box">
+                    <form method="POST" action="/login">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" type="username" name="username" placeholder="Your Name" autofocus="">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" type="password" name="password" placeholder="Your Password">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Remember me
+                            </label>
+                        </div>
+                        <button class="button is-block is-info is-large is-fullwidth">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock %}
