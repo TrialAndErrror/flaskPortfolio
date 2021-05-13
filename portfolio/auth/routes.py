@@ -11,7 +11,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login', methods=['GET'])
 def login():
     if not current_user.is_authenticated:
-        return render_template('portfolio/home/login.html')
+        return render_template('portfolio/main/login.html')
     else:
         flash('Already Logged-in')
         return redirect(url_for('resume.manage_resume'))
