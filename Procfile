@@ -1,1 +1,1 @@
-web: gunicorn "wsgi:create_app()"
+web: gunicorn "portfolio:create_app()"
