@@ -1,0 +1,157 @@
+{% extends 'portfolio/base/resume_base.html' %}
+
+{% block title %}
+    {% if current_user.is_authenticated %}
+        <title>Trial and Errror</title>
+    {% else %}
+        <title>404 Not Found</title>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+{% if current_user.is_authenticated %}
+<section style="padding-top: 7rem; width: 80%; margin: auto;" >
+  <div class="content-section">
+      <div style="padding: 3em 0em;">
+          <h1>
+            Manage Resume
+          </h1>
+      </div>
+
+      <table>
+          <thead>
+              <tr>
+                  <th>
+                      Actions
+                  </th>
+                  <th>
+                     Job Post
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for item in job_entries %}
+              <tr>
+                  <td>
+                      <h2>
+                          <a href="{{ url_for('resume.edit_job', job_id=item.id) }}">Edit</a>
+                      </h2>
+                      <h2>
+                          <a href="{{ url_for('resume.delete_job', job_id=item.id) }}">Delete</a>
+                      </h2>
+
+                  </td>
+                  <td>
+                      <div>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="padding-top: 1em"><h4>{{ item.employer }}</h4></td>
+                            <td style="text-align: right;">{% if not item.present_job %}
+                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to {{ item.end_date.strftime('%B') }} {{ item.end_date.strftime('%Y') }}</p>
+                                {% else %}
+                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to Present
+                                {% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span style="font-weight: bold;">{{ item.job_title }}</span>  ({{ item.location }})</td>
+                        </tr>
+                        <tr >
+                            <td colspan="2" style="border-bottom: 1px solid black">
+                                <ul>
+                                    <li>{{ item.line_1 }}</li>
+                                    {% if item.line_2 %}
+                                        <li>{{ item.line_2 }}</li>
+                                    {% endif %}
+                                    {% if item.line_3 %}
+                                        <li>{{ item.line_3 }}</li>
+                                    {% endif %}
+                                    {% if item.line_4 %}
+                                        <li>{{ item.line_4 }}</li>
+                                    {% endif %}
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                  </td>
+              </tr>
+            {% endfor %}
+          <tr>
+              <td style="padding: 3em 0em;">
+                  <h2>
+                      <a href="{{ url_for('resume.create_job') }}">New Job</a>
+                  </h2>
+              </td>
+          </tr>
+          </tbody>
+      </table>
+            <table>
+          <thead>
+              <tr>
+                  <th>
+                      Actions
+                  </th>
+                  <th>
+                     School Post
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for school in school_entries %}
+              <tr>
+                  <td>
+                      <h2>
+                          <a href="{{ url_for('resume.edit_school', school_id=school.id) }}">Edit</a>
+                      </h2>
+                      <h2>
+                          <a href="{{ url_for('resume.delete_school', school_id=school.id) }}">Delete</a>
+                      </h2>
+                  </td>
+                  <td>
+                      <div>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="padding-top: 1em">
+                                    <h4>{{ school.school_name }}</h4>
+                                </td>
+                                <td style="text-align: right;">
+                                        Graduated {{ school.graduation_date.strftime('%B') }} {{ school.graduation_date.strftime('%Y') }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-style: italic;">{{ school.degree }}</td>
+                            </tr>
+                            <tr >
+                                <td colspan="2" style="border-bottom: 1px solid black">
+                                    <ul>
+                                        <li>{{ school.line_1 }}</li>
+                                        {% if school.line_2 %}
+                                            <li>{{ school.line_2 }}</li>
+                                        {% endif %}
+                                        {% if school.line_3 %}
+                                            <li>{{ school.line_3 }}</li>
+                                        {% endif %}
+                                        {% if school.line_4 %}
+                                            <li>{{ school.line_4 }}</li>
+                                        {% endif %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                      </div>
+                  </td>
+              </tr>
+            {% endfor %}
+              <td style="padding: 3em 0em;">
+                  <h2>
+                      <a href="{{ url_for('resume.create_school') }}">New School</a>
+                  </h2>
+              </td>
+          </tbody>
+      </table>
+  </div>
+</section>
+{% else %}
+    {% include 'portfolio/resume/unauthenticated.html' %}
+{% endif %}
+{% endblock %}

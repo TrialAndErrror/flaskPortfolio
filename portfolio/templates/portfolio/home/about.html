@@ -1,0 +1,43 @@
+{% extends 'portfolio/base/resume_base.html' %}
+
+{% block title %}<title>Trial and Errror: Meet the Team</title>{% endblock %}
+
+
+{% block body %}
+    <section class="page-section bg-primary md-12 mb-0 pb-5" style="margin-top:4.7rem;">
+        <div class="container">
+            <!-- Contact Heading -->
+            <div class="row justify-content-center">
+                <h2 class="page-section-heading text-secondary d-inline-block mb-0 title_shadow">Meet the Team</h2>
+            </div>
+
+            <!-- Icon Divider-->
+            {% include 'portfolio/base/star_divider.html'%}
+        </div>
+    </section>
+
+    <section class="page-section mb-0 pt-5">
+        <div class="container row justify-content-center">
+            <!-- About Section Content-->
+            <div class="col-md-5" style="display: flex; align-items: center; justify-content: center; min-width: 350px">
+{#                <div class="m-0" style="padding: 20% 20%;">#}
+                    <img src="{{ url_for('static', filename='resume/wade.jpg') }}" alt="Picture of Wade and Kelsey Green" width="300px" height="300px" />
+{#                </div>#}
+            </div>
+            <div class="col-md-7" style="min-width: 250px">
+                <h4 class="mb-4 mt-4">Wade Green</h4>
+                <p class="pre-wrap lead"><a href="{{url_for('main.show_resume')}}">View Wade's Résumé</a></p>
+
+                <p class="pre-wrap lead">Wade Green is the Lead Web Developer, Software Engineer, and Content Creator of Trial and Errror.</p>
+                <p class="pre-wrap lead">Wade's areas of expertise include:</p>
+                <ul>
+                    <li>Python Software Development</li>
+                    <li>Django & Flask Web Development</li>
+                    <li>GIMP Image Processing</li>
+                    <li>HitFilm Video Editing</li>
+                </ul>
+                <p class="pre-wrap lead">Wade is also the top-ranked League player on staff and currently holds the record for most number of self-published songs written and performed.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

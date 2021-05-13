@@ -1,0 +1,151 @@
+{% extends 'portfolio/base/resume_base.html' %}
+
+{% block title %}
+    {% if current_user.is_authenticated %}
+        <title>Create School Post</title>
+    {% else %}
+        <title>404 Not Found</title>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+{% if current_user.is_authenticated %}
+<section style="padding-top: 7rem; width: 80%; margin: auto;" >
+  <div class="content-section">
+
+      <form method="POST" action="">
+          {{ form.hidden_tag() }}
+          <fieldset>
+              <legend class="border-bottom mb-4">Create New School</legend>
+            <table class="col-md-12">
+              <tr>
+                <td>
+                  <div class="col-md-12">
+                      {{ form.school_name.label(class="form-control-label") }}
+                      {% if form.school_name.errors %}
+                          {{ form.school_name(class="form-control is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.school_name.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.school_name(class="form-control", style="width: 100%") }}
+                      {% endif %}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="col-md-12">
+                      {{ form.degree.label(class="form-control-label") }}
+                      {% if form.degree.errors %}
+                          {{ form.degree(class="form-control is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.degree.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.degree(class="form-control") }}
+                      {% endif %}
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group  col-md-12">
+                      {{ form.graduation_date.label(class="form-control-label") }}
+                      {% if form.graduation_date.errors %}
+                          {{ form.graduation_date(class="form-control is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.graduation_date.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.graduation_date(class="form-control") }}
+                      {% endif %}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form-group col-md-12">
+                      {{ form.line_1.label(class="form-control-label") }}
+                      {% if form.line_1.errors %}
+                          {{ form.line_1(class="form-control is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.line_1.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.line_1(class="form-control") }}
+                      {% endif %}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form-group col-md-12">
+                    {{ form.line_2.label(class="form-control-label") }}
+                    {% if form.line_2.errors %}
+                        {{ form.line_2(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.line_2.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.line_2(class="form-control") }}
+                    {% endif %}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form-group col-md-12">
+                      {{ form.line_3.label(class="form-control-label") }}
+                      {% if form.line_3.errors %}
+                          {{ form.line_3(class="form-control is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.line_3.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.line_3(class="form-control") }}
+                      {% endif %}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form-group col-md-12">
+                      {{ form.line_4.label(class="form-control-label") }}
+                      {% if form.line_4.errors %}
+                          {{ form.line_4(class="form-control is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.line_4.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.line_4(class="form-control") }}
+                      {% endif %}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </fieldset>
+
+          <div class="form-group" style="padding-top: 2em">
+              {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+      </form>
+
+  </div>
+</section>
+{% else %}
+    {% include 'portfolio/resume/unauthenticated.html' %}
+{% endif %}
+{% endblock %}

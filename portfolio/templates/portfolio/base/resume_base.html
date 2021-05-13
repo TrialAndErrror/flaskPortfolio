@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        {% block title %}<title>Trial and Errror: Home</title>{% endblock %}
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='resume/css/styles.css') }}" rel="stylesheet">
+        <!-- Fonts CSS-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='resume/css/heading.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='resume/css/body.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='resume/css/my_css.css') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='resume/favicon.ico') }}"/>
+    </head>
+    <body id="page-top">
+        <div>
+                {% include 'portfolio/base/navbar.html' %}
+
+        </div>
+        <div class="main">
+<!--            {% with messages = get_flashed_messages(with_categories=true) %}-->
+<!--              {% if messages %}-->
+<!--                <ul class=flashes>-->
+<!--                {% for category, message in messages %}-->
+<!--                  <li class="{{ category }}">{{ message }}</li>-->
+<!--                {% endfor %}-->
+<!--                </ul>-->
+<!--              {% endif %}-->
+<!--            {% endwith %}-->
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+
+            {% block body %}
+            {% endblock %}
+        </div>
+        {% include 'portfolio/base/footer.html' %}
+    </body>
+</html>

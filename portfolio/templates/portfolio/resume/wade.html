@@ -1,0 +1,112 @@
+{% extends 'portfolio/base/resume_base.html' %}
+
+{% block title %}
+    <title>Trial and Errror: Wade Green Resume</title>
+{% endblock %}
+
+{% block body %}
+    <header class="masthead bg-primary text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="{{ url_for('static', filename='resume/wade.jpg') }}" alt="Wade Green">
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading mb-0 title_shadow">Wade Green</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="pre-wrap masthead-subheading font-weight-light mb-0">Attorney</p>
+                <p class="pre-wrap masthead-subheading font-weight-light mb-0">Python Developer</p>
+                <p class="pre-wrap masthead-subheading font-weight-light mb-0">Technology Educator</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <div style="padding-top: 2em; width: 100%">
+                <h2 style="text-align: right;"><a href="https://tne-public.s3.amazonaws.com/WadeGreen_Resume.pdf">Download Résumé</a></h2>
+            </div>
+        </div>
+
+        <div class="container">
+            <div style="padding-top: 2em; border-bottom: 5px solid black">
+                <h1>Employment History</h1>
+            </div>
+            {% for item in job_entries %}
+                <div>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="padding-top: 1em"><h4>{{ item.employer }}</h4></td>
+                            <td style="text-align: right;">{% if not item.present_job %}
+                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to {{ item.end_date.strftime('%B') }} {{ item.end_date.strftime('%Y') }}</p>
+                                {% else %}
+                                    {{ item.start_date.strftime('%B') }} {{ item.start_date.strftime('%Y') }} to Present
+                                {% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span style="font-weight: bold;">{{ item.job_title }}</span>  ({{ item.location }})</td>
+                        </tr>
+                        <tr >
+                            <td colspan="2" style="border-bottom: 1px solid black">
+                                <ul>
+                                    <li>{{ item.line_1 }}</li>
+                                    {% if item.line_2 %}
+                                        <li>{{ item.line_2 }}</li>
+                                    {% endif %}
+                                    {% if item.line_3 %}
+                                        <li>{{ item.line_3 }}</li>
+                                    {% endif %}
+                                    {% if item.line_4 %}
+                                        <li>{{ item.line_4 }}</li>
+                                    {% endif %}
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            {% endfor %}
+        </div>
+        <div class="container" style="padding-bottom: 2em;">
+            <div style="padding-top: 2em; border-bottom: 5px solid black">
+                <h1>Education</h1>
+            </div>
+            {% for item in school_entries %}
+                <div>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="padding-top: 1em">
+                                <h4>{{ item.school_name }}</h4>
+                            </td>
+                            <td style="text-align: right;">
+                                    Graduated {{ item.graduation_date.strftime('%B') }} {{ item.graduation_date.strftime('%Y') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-style: italic;">{{ item.degree }}</td>
+                        </tr>
+                        <tr >
+                            <td colspan="2" style="border-bottom: 1px solid black">
+                                <ul>
+                                    <li>{{ item.line_1 }}</li>
+                                    {% if item.line_2 %}
+                                        <li>{{ item.line_2 }}</li>
+                                    {% endif %}
+                                    {% if item.line_3 %}
+                                        <li>{{ item.line_3 }}</li>
+                                    {% endif %}
+                                    {% if item.line_4 %}
+                                        <li>{{ item.line_4 }}</li>
+                                    {% endif %}
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+
+{% endblock %}
