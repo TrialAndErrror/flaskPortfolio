@@ -14,8 +14,11 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='resume/css/my_css.css') }}">
         <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='resume/favicon.ico') }}"/>
     </head>
-    {% include 'resume/base/navbar.html' %}
     <body id="page-top">
+        <div>
+                {% include 'portfolio/base/navbar.html' %}
+
+        </div>
         <div class="main">
 <!--            {% with messages = get_flashed_messages(with_categories=true) %}-->
 <!--              {% if messages %}-->
@@ -40,6 +43,6 @@
             {% block body %}
             {% endblock %}
         </div>
-        {% include 'resume/base/footer.html' %}
+        {% include 'portfolio/base/footer.html' %}
     </body>
 </html>

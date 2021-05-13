@@ -1,4 +1,4 @@
-{% extends 'resume/base/resume_base.html' %}
+{% extends 'portfolio/base/resume_base.html' %}
 
 {% block title %}
     {% if current_user.is_authenticated %}
@@ -10,105 +10,59 @@
 
 {% block body %}
 {% if current_user.is_authenticated %}
-
 <section style="padding-top: 7rem; width: 80%; margin: auto;" >
   <div class="content-section">
+
       <form method="POST" action="">
           {{ form.hidden_tag() }}
           <fieldset>
-              <legend class="border-bottom mb-4">Create New Job</legend>
+              <legend class="border-bottom mb-4">Create New School</legend>
             <table class="col-md-12">
               <tr>
                 <td>
                   <div class="col-md-12">
-                      {{ form.job_title.label(class="form-control-label") }}
-                      {% if form.job_title.errors %}
-                          {{ form.job_title(class="form-control is-invalid") }}
+                      {{ form.school_name.label(class="form-control-label") }}
+                      {% if form.school_name.errors %}
+                          {{ form.school_name(class="form-control is-invalid") }}
                           <div class="invalid-feedback">
-                              {% for error in form.job_title.errors %}
+                              {% for error in form.school_name.errors %}
                                   <span>{{ error }}</span>
                               {% endfor %}
                           </div>
                       {% else %}
-                          {{ form.job_title(class="form-control", style="width: 100%") }}
+                          {{ form.school_name(class="form-control", style="width: 100%") }}
                       {% endif %}
                   </div>
-                </td>
-                <td>
-                  <div class="col-md-12">
-                      {{ form.employer.label(class="form-control-label") }}
-                      {% if form.employer.errors %}
-                          {{ form.employer(class="form-control is-invalid") }}
-                          <div class="invalid-feedback">
-                              {% for error in form.employer.errors %}
-                                  <span>{{ error }}</span>
-                              {% endfor %}
-                          </div>
-                      {% else %}
-                          {{ form.employer(class="form-control") }}
-                      {% endif %}
-                  </div>
-
-                </td>
-                <td>
-                    <div class="col-md-12">
-                      {{ form.location.label(class="form-control-label") }}
-                      {% if form.location.errors %}
-                          {{ form.location(class="form-control is-invalid") }}
-                          <div class="invalid-feedback">
-                              {% for error in form.location.errors %}
-                                  <span>{{ error }}</span>
-                              {% endfor %}
-                          </div>
-                      {% else %}
-                          {{ form.location(class="form-control") }}
-                      {% endif %}
-                    </div>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <div class="form-group date col-md-12">
-                      {{ form.start_date.label(class="form-control-label") }}
-                      {% if form.start_date.errors %}
-                          {{ form.start_date(class="form-control is-invalid") }}
+                  <div class="col-md-12">
+                      {{ form.degree.label(class="form-control-label") }}
+                      {% if form.degree.errors %}
+                          {{ form.degree(class="form-control is-invalid") }}
                           <div class="invalid-feedback">
-                              {% for error in form.start_date.errors %}
+                              {% for error in form.degree.errors %}
                                   <span>{{ error }}</span>
                               {% endfor %}
                           </div>
                       {% else %}
-                          {{ form.start_date(class="form-control") }}
+                          {{ form.degree(class="form-control") }}
                       {% endif %}
                   </div>
                 </td>
                 <td>
-                  <div class="form-checkbox col-md-12">
-                       {{ form.present_job.label(class="form-control-label") }}
-                      {% if form.present_job.errors %}
-                          {{ form.present_job(class="form-control is-invalid") }}
+                  <div class="form-group  col-md-12">
+                      {{ form.graduation_date.label(class="form-control-label") }}
+                      {% if form.graduation_date.errors %}
+                          {{ form.graduation_date(class="form-control is-invalid") }}
                           <div class="invalid-feedback">
-                              {% for error in form.present_job.errors %}
+                              {% for error in form.graduation_date.errors %}
                                   <span>{{ error }}</span>
                               {% endfor %}
                           </div>
                       {% else %}
-                          {{ form.present_job(class="form-control") }}
-                      {% endif %}
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group date col-md-12">
-                      {{ form.end_date.label(class="form-control-label") }}
-                      {% if form.end_date.errors %}
-                          {{ form.end_date(class="form-control is-invalid") }}
-                          <div class="invalid-feedback">
-                              {% for error in form.end_date.errors %}
-                                  <span>{{ error }}</span>
-                              {% endfor %}
-                          </div>
-                      {% else %}
-                          {{ form.end_date(class="form-control") }}
+                          {{ form.graduation_date(class="form-control") }}
                       {% endif %}
                   </div>
                 </td>
@@ -181,23 +135,6 @@
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td>
-                    <div class="form-checkbox col-md-6">
-                        {{ form.important.label(class="form-control-label") }}
-                        {% if form.important.errors %}
-                            {{ form.important(class="form-control is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.important.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.important(class="form-control") }}
-                        {% endif %}
-                    </div>
-                </td>
-              </tr>
             </table>
           </fieldset>
 
@@ -205,9 +142,10 @@
               {{ form.submit(class="btn btn-outline-info") }}
           </div>
       </form>
+
   </div>
 </section>
 {% else %}
-    {% include 'resume/resume/unauthenticated.html' %}
+    {% include 'portfolio/resume/unauthenticated.html' %}
 {% endif %}
 {% endblock %}

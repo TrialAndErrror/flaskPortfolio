@@ -1,4 +1,4 @@
-{% extends 'resume/base/resume_base.html' %}
+{% extends 'portfolio/base/resume_base.html' %}
 
 {% block title %}
     {% if current_user.is_authenticated %}
@@ -12,6 +12,11 @@
 {% if current_user.is_authenticated %}
 <section style="padding-top: 7rem; width: 80%; margin: auto;" >
   <div class="content-section">
+      <div style="padding: 3em 0em;">
+          <h1>
+            Manage Resume
+          </h1>
+      </div>
 
       <table>
           <thead>
@@ -29,10 +34,10 @@
               <tr>
                   <td>
                       <h2>
-                          <a href="{{ url_for('edit_job', job_id=item.id) }}">Edit</a>
+                          <a href="{{ url_for('resume.edit_job', job_id=item.id) }}">Edit</a>
                       </h2>
                       <h2>
-                          <a href="{{ url_for('delete_job', job_id=item.id) }}">Delete</a>
+                          <a href="{{ url_for('resume.delete_job', job_id=item.id) }}">Delete</a>
                       </h2>
 
                   </td>
@@ -72,9 +77,9 @@
               </tr>
             {% endfor %}
           <tr>
-              <td>
+              <td style="padding: 3em 0em;">
                   <h2>
-                      <a href="{{ url_for('create_job') }}">New Job</a>
+                      <a href="{{ url_for('resume.create_job') }}">New Job</a>
                   </h2>
               </td>
           </tr>
@@ -96,10 +101,10 @@
               <tr>
                   <td>
                       <h2>
-                          <a href="{{ url_for('edit_school', school_id=school.id) }}">Edit</a>
+                          <a href="{{ url_for('resume.edit_school', school_id=school.id) }}">Edit</a>
                       </h2>
                       <h2>
-                          <a href="{{ url_for('delete_school', school_id=school.id) }}">Delete</a>
+                          <a href="{{ url_for('resume.delete_school', school_id=school.id) }}">Delete</a>
                       </h2>
                   </td>
                   <td>
@@ -137,9 +142,9 @@
                   </td>
               </tr>
             {% endfor %}
-              <td>
+              <td style="padding: 3em 0em;">
                   <h2>
-                      <a href="{{ url_for('create_school') }}">New School</a>
+                      <a href="{{ url_for('resume.create_school') }}">New School</a>
                   </h2>
               </td>
           </tbody>
@@ -147,6 +152,6 @@
   </div>
 </section>
 {% else %}
-    {% include 'resume/resume/unauthenticated.html' %}
+    {% include 'portfolio/resume/unauthenticated.html' %}
 {% endif %}
 {% endblock %}
