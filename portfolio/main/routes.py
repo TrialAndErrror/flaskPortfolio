@@ -11,7 +11,7 @@ def home():
 
 @main.route('/about')
 def about():
-    return render_template('portfolio/home/about.html')
+    return render_template('portfolio/main/about.html')
 
 
 @main.route('/wade')
